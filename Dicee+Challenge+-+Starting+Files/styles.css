@@ -1,41 +1,297 @@
-.container {
-  width: 70%;
-  margin: auto;
-  text-align: center;
+@font-face {
+  src: url("../fonts/valorant_font.ttf");
+  font-family: valorant;
 }
 
-.dice {
-  text-align: center;
-  display: inline-block;
-
-}
+/*--------------------------------------------- Elements CSS ---------------------------------------------*/
 
 body {
-  background-color: #393E46;
+  margin: 0;
+  background-color: #181823;
+  font-family: valorant;
+}
+
+::selection {
+  color: #fff;
+  background-color: #8ec9fd43;
 }
 
 h1 {
-  margin: 30px;
-  font-family: 'Lobster', cursive;
+  margin: 15px 0;
+  color: #537FE7;
+  font-size: 6rem;
   text-shadow: 5px 0 #232931;
-  font-size: 8rem;
-  color: #4ECCA3;
-}
-
-p {
-  font-size: 2rem;
-  color: #4ECCA3;
-  font-family: 'Indie Flower', cursive;
+  user-select: none;
 }
 
 img {
-  width: 80%;
+  width: 50%;
+  margin-bottom: 2rem;
 }
 
-footer {
-  margin-top: 5%;
-  color: #EEEEEE;
-  text-align: center;
-  font-family: 'Indie Flower', cursive;
+label {
+  color: #fff;
+  font-size: 0.8rem;
+  user-select: none;
+}
 
+
+/*--------------------------------------------- Class CSS ---------------------------------------------*/
+
+/* Section Heading */
+.heading-section {
+  height: 9rem;
+  text-align: center;
+}
+
+/* Section Dice */
+.dice-section {
+  margin-bottom: 4%;
+  display: flex;
+  gap: 6%;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-container {
+  width: 20%;
+}
+
+.input-container {
+  position: relative;
+  border-top: 4px solid rgb(245, 98, 98);
+  border-right: 4px solid rgb(245, 98, 98);
+  border-radius: 5px;
+}
+
+.player-1, .player-2 {
+  position: absolute;
+  left: 5px;
+  top: 13px;
+  transition-duration: 200ms;
+} 
+
+.icon {
+  color: #fff;
+  font-size: 1.6rem;
+  position: absolute;
+  right: 25px;
+  top: 10px;
+  transition-duration: 200ms;
+  cursor: pointer;
+}
+
+.icon:active {
+  color: rgb(153, 145, 145);
+  transition-duration: 200ms;
+  transform: scale(0.9);
+}
+
+.input-box {
+  width: 65%;
+  height: 40px;
+  color: #fff;
+  font-size: 1.3rem;
+  font-family: valorant;
+  position: relative;
+  background: transparent;
+  border: 0;
+  border-bottom: 4px solid rgb(245, 98, 98);
+  border-radius: 5px;
+  outline: none;
+  backdrop-filter: blur(15px);
+}
+
+input:focus+label, input:valid+label {
+  top: -17px;
+  color: #939393;
+  transition-duration: 300ms;
+}
+
+.float-name {
+  position: absolute;
+  color: #fff;
+  font-size: 0.8rem;
+  top: 13px;
+  left: 67px;
+  transition-duration: 200ms;
+  pointer-events: none;
+}
+
+.float-name span {
+  display: inline-block;
+  min-width: 5px;
+  transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+input:focus ~ .float-name span {
+  font-size: 1.3rem;
+  color: #939393;
+  transform: translateX(-65px);
+}
+
+input:focus ~ .float-name {
+  top: 10px;
+}
+
+input:valid ~ .float-name {
+  opacity: 0;
+  transition-duration: 200ms;
+}
+
+.player-container {
+  border: 5px solid #C0EEF2;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.player12-text {
+  color: #537FE7;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Winner */
+.winner {
+  height: 10%;
+  width: 25%;
+  color: #537FE7;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-align: center;
+  opacity: 0;
+  cursor: default;
+  user-select: none;
+}
+
+/* Section Button */
+.action-button {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  width: 8rem;
+  height: 3rem;
+  padding-top: 5px;
+  background-color: #537FE7;
+  color: #EEEEEE;
+  font-size: 1.6rem;
+  font-family: valorant;
+  border: none;
+  border-radius: 4px;
+  text-align: center;
+  box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.46);
+  transition-duration: 200ms;
+  cursor: pointer;
+}
+
+.btn:active {
+  background-color: #4164b6;
+  font-size: 1.5rem;
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.46);
+  transition-duration: 200ms;
+  transform: scale(0.9);;
+}
+
+
+/*--------------------------------------------- Media Query ---------------------------------------------*/
+
+@media screen and (max-width: 950px) {
+
+  /*--------------------------------------------- Elements CSS ---------------------------------------------*/
+
+  h1 {
+      font-size: 4rem;
+  }
+
+  label {
+      font-size: 0.6rem;
+  }
+
+
+  /*--------------------------------------------- Class CSS ---------------------------------------------*/
+
+  .card-container {
+      width: 30%;
+  }
+
+  .icon {
+      font-size: 1.3rem;
+      top: 10px;
+      right: 15px;
+  }
+
+  .float-name {
+      font-size: 0.6rem;
+      left: 50px;
+  }
+
+  input:focus ~ .float-name {
+      left: 67px;
+  }
+
+  .player12-text {
+      font-size: 1.5rem;
+  }
+
+  .winner {
+      width: 22%;
+      font-size: 1.3rem;
+  }
+
+  .btn {
+      width: 6.5rem;
+      height: 2.5rem;
+      font-size: 1.1rem;
+  }
+
+  .btn:active {
+      font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+
+  /*--------------------------------------------- Elements CSS ---------------------------------------------*/
+
+  h1 {
+      font-size: 2.4rem;
+  }
+
+  label {
+      font-size: 0.58rem;
+  }
+
+
+  /*--------------------------------------------- Class CSS ---------------------------------------------*/
+
+  .heading-section {
+      height: 5rem;
+  }
+
+  .card-container {
+      width: 52%;
+  }
+
+  .dice-section {
+      flex-direction: column;
+      gap: 9%;
+  }
+
+  .float-name {
+      font-size: 0.58rem;
+  }
+
+  .player12-text {
+      font-size: 1.5rem;
+  }
+
+  .winner {
+      height: 12%;
+      width: 100%;
+      font-size: 1.5rem;
+  }
 }
